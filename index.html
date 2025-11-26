@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>倪振源 · Noita 主页入口</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="map-bg" class="map-bg" aria-hidden="true"></canvas>
+  
+
+  <div class="note-modal" id="note-modal" aria-hidden="true">
+    <div class="note-card">
+      <header>
+        <h4 id="note-title">C++ 随机笔记</h4>
+        <button id="note-close" aria-label="关闭笔记">关闭</button>
+      </header>
+      <div id="note-desc"></div>
+      <pre><code id="note-code"></code></pre>
+    </div>
+  </div>
+
+  <header class="top-nav">
+    <div class="nav-left">
+      <button class="hamburger" id="drawer-toggle" aria-label="打开侧边栏"><span></span></button>
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span>倪振源</span>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="profile.html">个人介绍</a>
+      <a href="hobbies.html">学习方向</a>
+      <a class="nav-noita" href="noita-records.html">Noita</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero-block">
+      <div class="hero-frame slider" data-slider="hero">
+        <div class="slide active">
+          <img src="image/noita1_greenRing.jpg" alt="Noita 游戏画面 1">
+        </div>
+        <div class="slide">
+          <img src="image/noita2_fungi.jpg" alt="Noita 游戏画面 2" loading="lazy" decoding="async">
+        </div>
+        <div class="slide">
+          <img src="image/noita3_hugeHeadBone.jpg" alt="Noita 游戏画面 3" loading="lazy" decoding="async">
+        </div>
+        <div class="slide">
+          <img src="image/noita4_leakingPotion.jpg" alt="Noita 游戏画面 4" loading="lazy" decoding="async">
+        </div>
+        <div class="slide">
+          <img src="image/noita5_floodedHiisiBase.jpg" alt="Noita 游戏画面 5" loading="lazy" decoding="async">
+        </div>
+        <div class="slide">
+          <img src="image/noita6_jungle.jpg" alt="Noita 游戏画面 6" loading="lazy" decoding="async">
+        </div>
+        <div class="slide">
+          <img src="image/noita7_bonePowder.jpg" alt="Noita 游戏画面 7" loading="lazy" decoding="async">
+        </div>
+
+        <button class="slider-btn prev" aria-label="上一张"><</button>
+        <button class="slider-btn next" aria-label="下一张">></button>
+
+        <div class="hero-overlay">
+          <h1 class="hero-title hero-title-strong">这里是 <span class="hero-name">倪振源</span> 的个人主页</h1>
+          <p class="hero-subtitle">记录学习经历，以及 <span class="muted-inline">Noita</span> 探索的足迹。</p>
+          <div class="hero-actions">
+            <a class="button-ghost btn-profile" href="profile.html">个人介绍</a>
+            <a class="button-ghost btn-hobbies" href="hobbies.html">学习方向</a>
+            <a class="button-ghost btn-noita" href="noita-records.html">Noita</a>
+          </div>
+          <div class="chip-row">
+            <span class="chip chip-accent">华中科技大学</span>
+            <span class="chip chip-accent">2025 级</span>
+            <span class="chip chip-accent">计算机类</span>
+            <span class="chip chip-accent">2502 班</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="map-bg.js"></script>
+  <script src="drawer.js"></script>
+  <script src="common.js"></script>
+
+  <script>
+    const sliders = new Map();
+
+    function initSlider(id, { autoplay = true, interval = 5200 } = {}) {
+      const root = document.querySelector(`[data-slider="${id}"]`);
+      if (!root) return;
+      const slides = Array.from(root.querySelectorAll('.slide'));
+      if (!slides.length) return;
+      let index = 0;
+      let timer;
+
+      const show = (next) => {
+        slides[index].classList.remove('active');
+        index = (next + slides.length) % slides.length;
+        slides[index].classList.add('active');
+      };
+
+      const restart = () => {
+        if (!autoplay) return;
+        clearInterval(timer);
+        timer = setInterval(() => show(index + 1), interval);
+      };
+
+      const prevBtn = root.querySelector('.slider-btn.prev');
+      const nextBtn = root.querySelector('.slider-btn.next');
+      prevBtn?.addEventListener('click', () => { show(index - 1); restart(); });
+      nextBtn?.addEventListener('click', () => { show(index + 1); restart(); });
+
+      if (autoplay) {
+        timer = setInterval(() => show(index + 1), interval);
+        root.addEventListener('mouseenter', () => clearInterval(timer));
+        root.addEventListener('mouseleave', restart);
+      }
+
+      sliders.set(id, { show, restart });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initSlider('hero', { autoplay: true, interval: 5200 });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+

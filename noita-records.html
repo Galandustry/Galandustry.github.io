@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>倪振源 · 胜利与死亡档案</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="map-bg" class="map-bg" aria-hidden="true"></canvas>
+  
+
+  <div class="note-modal" id="note-modal" aria-hidden="true">
+    <div class="note-card">
+      <header>
+        <h4 id="note-title">C++ 随机笔记</h4>
+        <button id="note-close" aria-label="关闭笔记">关闭</button>
+      </header>
+      <div id="note-desc"></div>
+      <pre><code id="note-code"></code></pre>
+    </div>
+  </div>
+
+  <header class="top-nav">
+    <div class="nav-left">
+      <button class="hamburger" id="drawer-toggle" aria-label="打开侧边栏"><span></span></button>
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span>倪振源</span>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">主页</a>
+      <a href="profile.html">个人介绍</a>
+      <a href="hobbies.html">学习方向</a>
+      <a class="nav-noita" href="noita-records.html">Noita</a>
+    </nav>
+  </header>
+
+  <main class="container noita-layout">
+    <section class="noita-hero">
+      <div class="noita-meta">Noita Archive</div>
+      <h1 class="noita-title">胜利与死亡档案</h1>
+      <p class="noita-lede">按时间排列。</p>
+    </section>
+
+    <section class="noita-columns">
+      <div class="noita-section-card">
+        <div class="noita-section-head">
+          <span class="noita-index">01</span>
+          <div>
+            <h2>胜利</h2>
+          </div>
+        </div>
+        <div class="slider" data-slider="win">
+          <div class="slide active">
+            <img src="image/noita_win/20251111225945_1.jpg" alt="Noita 胜利截图 2025-11-11">
+            <span class="label">2025-11-11</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20251111175944_1.jpg" alt="Noita 胜利截图 2025-11-11 17:59" loading="lazy" decoding="async">
+            <span class="label">2025-11-11</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20251108175322_1.jpg" alt="Noita 胜利截图 2025-11-08" loading="lazy" decoding="async">
+            <span class="label">2025-11-08</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20251031221408_1.jpg" alt="Noita 胜利截图 2025-10-31" loading="lazy" decoding="async">
+            <span class="label">2025-10-31</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20251029224159_1.jpg" alt="Noita 胜利截图 2025-10-29" loading="lazy" decoding="async">
+            <span class="label">2025-10-29</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20251028093040_1.jpg" alt="Noita 胜利截图 2025-10-28" loading="lazy" decoding="async">
+            <span class="label">2025-10-28</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20251012121657_1.jpg" alt="Noita 胜利截图 2025-10-12" loading="lazy" decoding="async">
+            <span class="label">2025-10-12</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20250921205442_1.jpg" alt="Noita 胜利截图 2025-09-21" loading="lazy" decoding="async">
+            <span class="label">2025-09-21</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20250810162752_1.jpg" alt="Noita 胜利截图 2025-08-10" loading="lazy" decoding="async">
+            <span class="label">2025-08-10</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20250809191950_1.jpg" alt="Noita 胜利截图 2025-08-09" loading="lazy" decoding="async">
+            <span class="label">2025-08-09</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20250807202620_1.jpg" alt="Noita 胜利截图 2025-08-07" loading="lazy" decoding="async">
+            <span class="label">2025-08-07</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20250806234402_1.jpg" alt="Noita 胜利截图 2025-08-06" loading="lazy" decoding="async">
+            <span class="label">2025-08-06</span>
+          </div>
+          <div class="slide">
+            <img src="image/noita_win/20250806234352_1.jpg" alt="Noita 胜利截图 2025-08-06" loading="lazy" decoding="async">
+            <span class="label">2025-08-06</span>
+          </div>
+          <button class="slider-btn prev" data-target="win" aria-label="上一张">&lt;</button>
+          <button class="slider-btn next" data-target="win" aria-label="下一张">&gt;</button>
+        </div>
+      </div>
+
+      <div class="noita-section-card cold">
+        <div class="noita-section-head">
+          <span class="noita-index">02</span>
+          <div>
+            <h2>死亡</h2>
+          </div>
+        </div>
+        <div class="slider" data-slider="death">
+          <div class="slides" id="death-slides"></div>
+          <button class="slider-btn prev" data-target="death" aria-label="上一张">&lt;</button>
+          <button class="slider-btn next" data-target="death" aria-label="下一张">&gt;</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="death-list.js"></script>
+  <script src="map-bg.js"></script>
+  <script src="drawer.js"></script>
+  <script src="common.js"></script>
+
+  <script>
+    const gallerySliders = new Map();
+    function initSlider(id, { autoplay = false, interval = 6200, lightLoad = false } = {}) {
+      const root = document.querySelector(`[data-slider="${id}"]`);
+      if (!root) return;
+      const slides = Array.from(root.querySelectorAll('.slide'));
+      if (!slides.length) return;
+      let index = 0;
+      let timer;
+      const ensureLoaded = (slide) => {
+        const img = slide.querySelector('img');
+        if (!img) return;
+        if (!img.src) {
+          const ds = img.dataset.src;
+          if (ds) img.src = ds;
+        }
+      };
+      const show = (next) => {
+        slides[index].classList.remove('active');
+        if (lightLoad) {
+          const prevImg = slides[index].querySelector('img');
+          if (prevImg && prevImg.dataset.src) prevImg.removeAttribute('src');
+        }
+        index = (next + slides.length) % slides.length;
+        ensureLoaded(slides[index]);
+        slides[index].classList.add('active');
+      };
+      const restart = () => {
+        if (!autoplay) return;
+        clearInterval(timer);
+        timer = setInterval(() => show(index + 1), interval);
+      };
+      const prevBtn = root.querySelector('.slider-btn.prev');
+      const nextBtn = root.querySelector('.slider-btn.next');
+      prevBtn?.addEventListener('click', () => { show(index - 1); restart(); });
+      nextBtn?.addEventListener('click', () => { show(index + 1); restart(); });
+      if (autoplay) {
+        timer = setInterval(() => show(index + 1), interval);
+        root.addEventListener('mouseenter', () => clearInterval(timer));
+        root.addEventListener('mouseleave', restart);
+      }
+      gallerySliders.set(id, { show, restart });
+    }
+    function formatLabelFromName(name) {
+      const raw = name.slice(6, 14);
+      if (raw.length !== 8) return '';
+      return `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`;
+    }
+    function buildDeathSlides() {
+      const list = Array.isArray(window.NOITA_DEATH_GIFS) ? window.NOITA_DEATH_GIFS : [];
+      const container = document.getElementById('death-slides');
+      if (!container || !list.length) return;
+      const frag = document.createDocumentFragment();
+      list.forEach((name, idx) => {
+        const item = document.createElement('div');
+        item.className = 'slide' + (idx === 0 ? ' active' : '');
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.dataset.src = `image/noita_death/${name}`;
+        if (idx === 0) img.src = img.dataset.src;
+        img.alt = `Noita 死亡瞬间 ${formatLabelFromName(name)}`;
+        const label = document.createElement('span');
+        label.className = 'label';
+        label.textContent = formatLabelFromName(name);
+        item.appendChild(img);
+        item.appendChild(label);
+        frag.appendChild(item);
+      });
+      container.innerHTML = '';
+      container.appendChild(frag);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      buildDeathSlides();
+      initSlider('win');
+      initSlider('death', { lightLoad: true });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
